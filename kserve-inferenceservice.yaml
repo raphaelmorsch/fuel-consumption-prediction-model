@@ -1,0 +1,15 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  name: fuel-efficiency-rf
+spec:
+  predictor:
+    sklearn:
+      storageUri: "pvc://models/fuel-efficiency-rf"
+      resources:
+        requests:
+          cpu: "500m"
+          memory: "1Gi"
+        limits:
+          cpu: "1"
+          memory: "2Gi"

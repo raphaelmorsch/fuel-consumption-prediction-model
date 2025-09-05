@@ -1,0 +1,14 @@
+{
+  "instances": [
+    {
+      "num_cars": 7,
+      "load_weight_kg": 10150,
+      "route_distance_km": 680,
+      "avg_speed_kmh": 78,
+      "elevation_gain_m": 550,
+      "ambient_temp_c": 26,
+      "rain_mm": 3.0,
+      "wind_kmh": 12
+    }
+  ]
+}
