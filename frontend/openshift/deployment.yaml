@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fuel-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fuel-frontend
+  template:
+    metadata:
+      labels:
+        app: fuel-frontend
+    spec:
+      containers:
+      - name: frontend
+        image: REPLACE_WITH_IMAGE
+        ports:
+        - containerPort: 8080
+        env:
+        - name: REACT_APP_INFERENCE_URL
+          value: "https://fuel-efficiency.example.com/v1/models/fuel-efficiency-rf:predict"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fuel-frontend
+spec:
+  selector:
+    app: fuel-frontend
+  ports:
+  - port: 8080
+    targetPort: 8080
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: fuel-frontend
+spec:
+  to:
+    kind: Service
+    name: fuel-frontend
+  port:
+    targetPort: 8080
+  tls:
+    termination: edge
