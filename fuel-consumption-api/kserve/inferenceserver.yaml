@@ -1,0 +1,25 @@
+apiVersion: "serving.kserve.io/v1beta1"
+kind: "InferenceService"
+metadata:
+  name: fuel-consumption
+  namespace: fuel-optimizer
+spec:
+  predictor:
+    custom:
+      container:
+        image: image-registry.openshift-image-registry.svc:5000/fuel-optimizer/fuel-consumption-api:latest
+        name: fuel-consumption-predictor
+        ports:
+          - containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 20
