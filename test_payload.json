@@ -1,7 +1,7 @@
 {
   "inputs": [
     {
-      "name": "input_0",   
+      "name": "input",   
       "shape": [1, 8],
       "datatype": "FP32",
       "data": [[7, 10150, 680, 78, 550, 26, 3.0, 12]]

@@ -1,0 +1,13 @@
+raphaelmorsch@ramoreir-mac fuel-consumption-prediction-model % curl -s $MODEL_SERVER/v2/models/model/infer \
+-H "Authorization: Bearer $TOKEN" \
+-d @test_payload.json
+{
+    "model_name": "model",
+    "model_version": "1",
+    "outputs": [{
+            "name": "output",
+            "shape": [1, 1],
+            "datatype": "FP32",
+            "data": [32.12363815307617]
+        }]
+}%                                                                                                                                                                  
